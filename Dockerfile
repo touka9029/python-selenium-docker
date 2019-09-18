@@ -1,4 +1,4 @@
-FROM python:3.7.4-alpine3.10
+FROM python:3-alpine
 
 # timezone
 RUN apk --update --no-cache add tzdata \
@@ -6,7 +6,7 @@ RUN apk --update --no-cache add tzdata \
   && apk del tzdata
 
 # required packages
-RUN apk add ttf-freefont chromium chromium-chromedriver
+RUN apk add ttf-freefont chromium chromium-chromedriver vim bash
 RUN pip install beautifulsoup4 selenium
 
 # fonts
@@ -19,3 +19,5 @@ RUN unzip NotoSansCJKjp-hinted.zip && \
     chmod 644 -R /usr/share/fonts/noto/ && \
     fc-cache -fv
 RUN rm -rf /noto
+
+WORKDIR /
