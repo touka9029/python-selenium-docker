@@ -7,7 +7,6 @@ RUN apk --update --no-cache add tzdata \
 
 # required packages
 RUN apk add ttf-freefont chromium chromium-chromedriver vim bash git
-RUN pip install beautifulsoup4 selenium
 
 # fonts
 RUN mkdir /noto
