@@ -7,8 +7,8 @@ RUN apk --update --no-cache add tzdata \
 
 # required packages, poetry install
 RUN apk add ttf-freefont chromium chromium-chromedriver vim bash git curl \
-  && curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-ENV PATH=$PATH:$HOME/.poetry/bin
+  && curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python \
+  && ln -s /root/.poetry/bin/poetry /usr/local/bin/poetry
 
 # fonts
 RUN mkdir /noto
