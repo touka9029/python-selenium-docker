@@ -5,8 +5,10 @@ RUN apk --update --no-cache add tzdata \
   && cp /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
   && apk del tzdata
 
-# required packages
-RUN apk add ttf-freefont chromium chromium-chromedriver vim bash git
+# required packages, poetry install
+RUN apk add ttf-freefont chromium chromium-chromedriver vim bash git curl \
+  && curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+ENV PATH=$PATH:$HOME/.poetry/bin
 
 # fonts
 RUN mkdir /noto
